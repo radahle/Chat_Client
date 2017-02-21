@@ -1,9 +1,6 @@
 package Core;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -85,7 +82,14 @@ public class ClientService extends Service {
 
 					while(true) {
 						receivedText = bufferedReader.readLine();
+
+						//regex som finner clientList kode
+						if (true /*regex er true*/) {
+							//legg inn i listview clientList
+
+						} else {
 						chatWindow.appendText(receivedText + "\n");
+						}
 
 						System.out.println("Mottar fra server: " + receivedText);
 
