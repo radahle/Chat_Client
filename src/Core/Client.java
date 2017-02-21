@@ -93,7 +93,7 @@ public class Client extends Task {
 
     public void start() throws UnknownHostException, IOException{
         Socket clientSocket = new Socket(hostName, portNumber);
-        cs = new ClientService(clientSocket, hostName, portNumber, textField_OutputText, chatWindow, sendTxt_button);
+        cs = new ClientService(clientSocket, hostName, portNumber, textField_OutputText, chatWindow, sendTxt_button, client_List);
         Thread thread = new Thread(this);
         thread.start();
         System.out.println("Start");
