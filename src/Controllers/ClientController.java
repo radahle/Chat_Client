@@ -43,13 +43,13 @@ public class ClientController implements Initializable {
         hostName = hostCredentials.getHostName();
         portNumber = hostCredentials.getPortNumber();
 
-        client = new Client(hostName, portNumber, clients_list, chat_window, textField_OutputText);
+        client = new Client(hostName, portNumber, clients_list, chat_window, textField_OutputText, sendTxt_button);
         try {
-			client.start();
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+            client.start();
+        } catch (Exception e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
     }
 
 /*
@@ -72,21 +72,5 @@ public class ClientController implements Initializable {
         });
     }*/
 
-    public void sendMessageButton(ActionEvent actionEvent) throws IOException {
 
-        //cs.sendToServer(textField_OutputText.getText());
-        Platform.runLater(() -> {
-			try {
-				cs.sendToServer(textField_OutputText.getText());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		});
-        if (!textField_OutputText.getText().isEmpty()){
-            chat_window.appendText("Me: " + textField_OutputText.getText() + "\n");
-            textField_OutputText.clear();
-        }
-
-    }
 }

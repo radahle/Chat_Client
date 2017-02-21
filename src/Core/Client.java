@@ -4,6 +4,7 @@ import Controllers.LoginController;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -26,6 +27,8 @@ public class Client extends Task {
     @FXML ListView client_List;
     @FXML TextArea chatWindow;
     @FXML TextField textField_OutputText;
+    @FXML
+    Button sendTxt_button;
 
     private String hostName;
     private int portNumber;
@@ -36,13 +39,14 @@ public class Client extends Task {
 
 
     public Client(String hostName, int portNumber, ListView client_List, TextArea chatWindow,
-                    TextField textField_OutputText) {
+                  TextField textField_OutputText, Button sendTxt_button) {
 
         this.chatWindow = chatWindow;
         this.client_List = client_List;
         this.hostName = hostName;
         this.portNumber = portNumber;
         this.textField_OutputText = textField_OutputText;
+        this.sendTxt_button = sendTxt_button;
 
     }
 
@@ -79,17 +83,17 @@ public class Client extends Task {
         return text;
     }
 
-	@Override
-	protected Object call() throws Exception {
-		while(true) {
-			System.out.println("Client call");
-			cs.start();	
-		}
-	}
-	
+    @Override
+    protected Object call() throws Exception {
+        while(true) {
+            System.out.println("Client call");
+            cs.start();
+        }
+    }
+
     public void start() throws UnknownHostException, IOException{
-    	Socket clientSocket = new Socket(hostName, portNumber);
-    	cs = new ClientService(clientSocket, hostName, portNumber, textField_OutputText, chatWindow);
+        Socket clientSocket = new Socket(hostName, portNumber);
+        cs = new ClientService(clientSocket, hostName, portNumber, textField_OutputText, chatWindow, sendTxt_button);
         Thread thread = new Thread(this);
         thread.start();
         System.out.println("Start");
