@@ -20,5 +20,6 @@ public class Main extends Application {
         primaryStage.setTitle("Chat");
         primaryStage.setScene(new Scene(root, 800, 550));
         primaryStage.show();
+        root.getStylesheets().add("Style.css");
     }
 }

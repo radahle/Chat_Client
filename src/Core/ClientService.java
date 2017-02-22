@@ -98,7 +98,11 @@ public class ClientService extends Service {
                         Matcher clientMatcher = clientPattern.matcher(receivedText);
                         if (clientMatcher.find()) {
                             String finalClientInfo = clientMatcher.group(1);
-                            Platform.runLater(() -> client_List.getItems().add(finalClientInfo));
+
+                            Platform.runLater(() -> {
+								client_List.getItems().removeAll(finalClientInfo);
+								client_List.getItems().add(finalClientInfo);
+									});
                         } else {
                             chatWindow.appendText(receivedText + "\n");
                             System.out.println("Mottar fra server: " + receivedText);

@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
@@ -11,7 +17,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="847.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ClientController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="847.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ClientController">
     <children>
         <MenuBar layoutX="6.0" layoutY="8.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <menus>
@@ -45,10 +51,14 @@
                 <MenuItem mnemonicParsing="false" text="Offline" />
             </items>
         </MenuButton>
-        <Button fx:id="sendTxt_button" layoutX="642.0" layoutY="478.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="195.0" text="Send">
+        <Button fx:id="sendTxt_button" layoutX="642.0" layoutY="478.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="195.0" stylesheets="@Style.css" text="Send">
+
          <font>
-            <Font name="Arial Rounded MT Bold" size="15.0" />
-         </font></Button>
+            <Font name="Apple SD Gothic Neo Regular" size="15.0" />
+         </font>
+         <effect>
+            <ColorAdjust brightness="-0.07" contrast="0.02" hue="-0.8" saturation="0.86" />
+         </effect></Button>
       <TextField fx:id="textField_OutputText" layoutX="15.0" layoutY="478.0" prefHeight="27.0" prefWidth="613.0" />
     </children>
 </AnchorPane>
