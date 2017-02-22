@@ -57,8 +57,8 @@ public class LoginController implements Initializable {
 
     /**
      * OnLoginClick takes all credentials written by user and checks if they are valid. If hostname and portnumber is not given
-     * then default values are used. If username and/or password is not
-     * and opens a new Stage called "Chat Application".
+     * then default values are used. If username and/or password is not correct user will receive an error-message.
+     * If all requirements are met a new stage are opened.
      * @param actionEvent is used when user clicks on button.
      * @throws IOException
      */
