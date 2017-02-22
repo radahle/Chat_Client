@@ -4,7 +4,10 @@ import javafx.scene.media.AudioClip;
 import java.io.File;
 
 /**
- * Created by pontusskold on 22.02.2017.
+ * @author Shohaib Muhammad <S300363>
+ * @author Kittimasak Bunrat <s300342>
+ * @author Pontus Sköld <s300377>
+ * @author Rudi André Dahle <s300373>
  */
 public class MediaPlayer {
 

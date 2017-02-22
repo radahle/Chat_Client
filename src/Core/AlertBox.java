@@ -3,7 +3,10 @@ package Core;
 import javafx.scene.control.Alert;
 
 /**
- * Created by shohaib on 10/02/2017.
+ * @author Shohaib Muhammad <S300363>
+ * @author Kittimasak Bunrat <s300342>
+ * @author Pontus Sköld <s300377>
+ * @author Rudi André Dahle <s300373>
  */
 public class AlertBox {
 
@@ -11,7 +14,7 @@ public class AlertBox {
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Bad credentials");
-        alert.setContentText("Wrong Credentials, please try again or create an Account");
+        alert.setContentText("Wrong Credentials, please try again or create an Account, please try again");
         alert.showAndWait();
     }
 

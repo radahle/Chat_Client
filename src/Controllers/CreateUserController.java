@@ -8,12 +8,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by RudiAndre & pontusskoldon 03.02.2017.
+ * @author Shohaib Muhammad <S300363>
+ * @author Kittimasak Bunrat <s300342>
+ * @author Pontus Sköld <s300377>
+ * @author Rudi André Dahle <s300373>
  */
 public class CreateUserController implements Initializable {
 
@@ -30,7 +32,11 @@ public class CreateUserController implements Initializable {
     FileHandler fileHandler;
     Stage stage;
 
-
+    /**
+     * Initialize method.
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -38,6 +44,11 @@ public class CreateUserController implements Initializable {
         stage = new Stage();
     }
 
+    /**
+     * onCreateAccountClick checks that the same password has been written twice and creates an account.
+     * Information is stored localy inside the server.
+     * @param actionEvent actionevent is used when user clicks on button.
+     */
     public void onCreateAccountClick(ActionEvent actionEvent) {
 
         if (!confirm_Password.getText().equals(create_Password.getText())){

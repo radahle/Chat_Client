@@ -1,7 +1,6 @@
 package Controllers;
 
 import Core.AlertBox;
-import Core.Client;
 import Core.FileHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,18 +9,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by pontus & rudi on 26.01.2017.
+ * @author Shohaib Muhammad <S300363>
+ * @author Kittimasak Bunrat <s300342>
+ * @author Pontus Sköld <s300377>
+ * @author Rudi André Dahle <s300373>
  */
 public class LoginController implements Initializable {
 
@@ -37,23 +36,32 @@ public class LoginController implements Initializable {
     Stage messenger;
     FileHandler fileHandler;
 
+    /**
+     * Initialize method.
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         createAccountStage = new Stage();
         messenger = new Stage();
         fileHandler = new FileHandler();
-
-
         port_Number_TextField.setOnKeyTyped(event -> {
             if (event.getCharacter().matches("[0-9]")){
 
             }
             else event.consume();
         });
-
     }
 
+    /**
+     * OnLoginClick takes all credentials written by user and checks if they are valid. If hostname and portnumber is not given
+     * then default values are used. If username and/or password is not
+     * and opens a new Stage called "Chat Application".
+     * @param actionEvent is used when user clicks on button.
+     * @throws IOException
+     */
     public void onLoginClick(ActionEvent actionEvent) throws IOException {
 
         if (fileHandler.readCredentials(username_TextField.getText(), passwordField.getText())){

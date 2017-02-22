@@ -8,6 +8,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * @author Shohaib Muhammad <S300363>
+ * @author Kittimasak Bunrat <s300342>
+ * @author Pontus Sköld <s300377>
+ * @author Rudi André Dahle <s300373>
+ */
+
 public class Main extends Application {
 
     public static void main(String[] args) {

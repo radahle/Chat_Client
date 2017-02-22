@@ -20,7 +20,10 @@ import java.util.ArrayList;
 import javafx.application.Platform;
 
 /**
- * Created by Pontus & Rudi on 31.01.2017.
+ * @author Shohaib Muhammad <S300363>
+ * @author Kittimasak Bunrat <s300342>
+ * @author Pontus Sköld <s300377>
+ * @author Rudi André Dahle <s300373>
  */
 public class Client extends Task {
 
