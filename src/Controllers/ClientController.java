@@ -35,7 +35,6 @@ public class ClientController implements Initializable {
     // Class related objects
     Client client;
     HostCredentials hostCredentials;
-    MediaPlayer mediaPlayer;
 
     /**
      * Initialize method.
@@ -49,8 +48,7 @@ public class ClientController implements Initializable {
         hostCredentials.getServerCredentials();
         hostName = hostCredentials.getHostName();
         portNumber = hostCredentials.getPortNumber();
-        mediaPlayer = new MediaPlayer("login_Sound.wav");
-        mediaPlayer.playSound();
+
 
         client = new Client(hostName, portNumber, clients_list, chat_window, textField_OutputText, sendTxt_button);
         try {
