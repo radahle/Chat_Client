@@ -1,6 +1,8 @@
 package Core;
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -28,7 +30,9 @@ import java.util.regex.Pattern;
 
 public class ClientService extends Service {
 
-    @FXML
+    public ObservableList<String> clientOList = FXCollections.observableArrayList();
+    public ObservableList<String> tempOList = FXCollections.observableArrayList();
+    //  @FXML
     ListView client_List;
     @FXML
     TextArea chatWindow;
@@ -36,7 +40,6 @@ public class ClientService extends Service {
     TextField textField_OutputText;
     @FXML
     Button sendTxt_button;
-
     Socket clientSocket;
     private String hostName;
     private int portNumber;
@@ -136,16 +139,30 @@ public class ClientService extends Service {
 
                         Pattern clientPattern = Pattern.compile("(?<=\\#\\@\\$)(.*)(?=\\$\\@\\#)");
                         Matcher clientMatcher = clientPattern.matcher(receivedText);
+
+                        Pattern stopPattern = Pattern.compile("\\£\\#\\|\\¤\\%\\|\\&\\&\\|\\%\\¤\\|\\#\\£");
+                        Matcher stopMatcher = stopPattern.matcher(receivedText);
+
                         if (clientMatcher.find()) {
                             String finalClientInfo = clientMatcher.group(1);
-
+                            System.out.println("tempoList før:  " + tempOList);
                             Platform.runLater(() -> {
-								client_List.getItems().removeAll(finalClientInfo);
-								client_List.getItems().add(finalClientInfo);
-									});
+                                tempOList.add(finalClientInfo);
+                            });
+                            System.out.println("tempoList etter:  " + tempOList);
+
+                        } else if (stopMatcher.matches()) {
+                            Platform.runLater(() -> {
+                               // int length = Math.min(tempOList.size(), clientOList.size());
+                                clientOList.clear();
+                                for (int i = 0; i < tempOList.size(); i++) {
+                                    clientOList.add(tempOList.get(i));
+                                }
+                                tempOList.clear();
+                                client_List.setItems(clientOList);
+                            });
                         } else {
                             chatWindow.appendText(receivedText + "\n");
-                            System.out.println("Mottar fra server: " + receivedText);
                         }
                     }
 
@@ -158,10 +175,12 @@ public class ClientService extends Service {
                     AlertBox.badHost();
                     System.exit(0);
                 }
+
                 return null;
             }
 
         };
+
         return task;
     }
 
@@ -175,8 +194,6 @@ public class ClientService extends Service {
         }
     }
 
-    ////// /+ "@" + "1234" <- mottakerport*/
-
     public String readMessage() throws IOException {
 
         String text = bufferedReader.readLine();
@@ -184,7 +201,6 @@ public class ClientService extends Service {
 
         return text;
     }
-
 
 
 }
