@@ -116,7 +116,7 @@ public class ClientService extends Service {
                         try {
 
                             sendToServer(textField_OutputText.getText());
-                            chatWindow.appendText("Me: " + textField_OutputText.getText() + "\n");
+                            chatWindow.appendText("(Me): " + textField_OutputText.getText() + "\n");
                             textField_OutputText.clear();
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -129,7 +129,7 @@ public class ClientService extends Service {
                             try {
 
                                 sendToServer(textField_OutputText.getText());
-                                chatWindow.appendText("Me: " + textField_OutputText.getText() + "\n");
+                                chatWindow.appendText("(Me): " + textField_OutputText.getText() + "\n");
                                 textField_OutputText.clear();
                             } catch (IOException e) {
                                 e.printStackTrace();
@@ -150,15 +150,12 @@ public class ClientService extends Service {
 
                         if (clientMatcher.find()) {
                             String finalClientInfo = clientMatcher.group(1);
-                            System.out.println("tempoList før:  " + tempOList);
                             Platform.runLater(() -> {
                                 tempOList.add(finalClientInfo);
                             });
-                            System.out.println("tempoList etter:  " + tempOList);
 
                         } else if (stopMatcher.matches()) {
                             Platform.runLater(() -> {
-                               // int length = Math.min(tempOList.size(), clientOList.size());
                                 clientOList.clear();
                                 for (int i = 0; i < tempOList.size(); i++) {
                                     clientOList.add(tempOList.get(i));
@@ -168,7 +165,6 @@ public class ClientService extends Service {
                             });
                         } else {
                             chatWindow.appendText(receivedText + "\n");
-                            System.out.println("Mottar fra server: " + receivedText);
                         }
                     }
 
@@ -194,21 +190,11 @@ public class ClientService extends Service {
     public void sendToServer(String message) throws IOException {
         if (!message.isEmpty()) {
 
-            printWriter.println(clientSocket.getLocalPort() + ":" + message + contactPort);
+            printWriter.println("[" + clientSocket.getLocalPort() + "]: " + message + contactPort);
             printWriter.flush();
 
         }
     }
-
-    public String readMessage() throws IOException {
-
-        String text = bufferedReader.readLine();
-        if (text.isEmpty()) text = "empty";
-
-        return text;
-    }
-
-
 
 }
 
