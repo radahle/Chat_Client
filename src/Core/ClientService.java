@@ -30,35 +30,34 @@ import java.util.regex.Pattern;
 
 public class ClientService extends Service {
 
+    @FXML ListView client_List;
+    @FXML TextArea chatWindow;
+    @FXML TextField textField_OutputText;
+    @FXML Button sendTxt_button;
+
     public ObservableList<String> clientOList = FXCollections.observableArrayList();
     public ObservableList<String> tempOList = FXCollections.observableArrayList();
-    //  @FXML
-    ListView client_List;
-    @FXML
-    TextArea chatWindow;
-    @FXML
-    TextField textField_OutputText;
-    @FXML
-    Button sendTxt_button;
-    Socket clientSocket;
+    private Socket clientSocket;
     private String hostName;
     private int portNumber;
-    private String serverFeedBack;
     private PrintWriter printWriter;
     private BufferedReader bufferedReader;
     private String contactPort;
+    private int clientPort;
     MediaPlayer mediaPlayer;
 
-    public ClientService(Socket s, String host, int port, TextField textField_OutPutText,
+    public ClientService(Socket socket, String hostName, int portNumber, TextField textField_OutPutText,
                          TextArea textArea_ChatWindow, Button sendTxt_button, ListView client_List) {
-        this.clientSocket = s;
-        this.portNumber = port;
-        this.hostName = host;
+        this.clientSocket = socket;
+        this.portNumber = portNumber;
+        this.hostName = hostName;
         this.textField_OutputText = textField_OutPutText;
         this.chatWindow = textArea_ChatWindow;
         this.sendTxt_button = sendTxt_button;
         this.client_List = client_List;
-        mediaPlayer = new MediaPlayer("receivedMessage.wav");
+        this.clientPort = socket.getLocalPort();
+
+        mediaPlayer = new MediaPlayer("Notification.wav");
 
         Platform.runLater(() -> {
 
@@ -91,6 +90,12 @@ public class ClientService extends Service {
 
         });
 
+    }
+
+
+    public int getClientPort() {
+
+        return clientPort;
     }
 
     @Override
@@ -163,6 +168,7 @@ public class ClientService extends Service {
                             });
                         } else {
                             chatWindow.appendText(receivedText + "\n");
+                            System.out.println("Mottar fra server: " + receivedText);
                         }
                     }
 
@@ -201,6 +207,7 @@ public class ClientService extends Service {
 
         return text;
     }
+
 
 
 }

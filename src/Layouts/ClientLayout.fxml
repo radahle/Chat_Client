@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -9,14 +10,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="570.0" prefWidth="847.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ClientController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="587.0" prefWidth="930.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.ClientController">
     <children>
-        <TextArea fx:id="chat_window" editable="false" layoutX="15.0" layoutY="22.0" prefHeight="437.0" prefWidth="613.0">
+        <TextArea fx:id="chat_window" editable="false" layoutX="31.0" layoutY="63.0" prefHeight="437.0" prefWidth="655.0">
          <font>
             <Font name="Apple SD Gothic Neo Regular" size="27.0" />
          </font></TextArea>
-        <ListView fx:id="clients_list" layoutX="642.0" layoutY="75.0" prefHeight="382.0" prefWidth="195.0" />
-        <MenuButton fx:id="status_button" layoutX="642.0" layoutY="28.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="195.0">
+        <ListView fx:id="clients_list" layoutX="704.0" layoutY="143.0" prefHeight="357.0" prefWidth="195.0" />
+        <MenuButton fx:id="status_button" layoutX="704.0" layoutY="63.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="195.0">
             <items>
                 <MenuItem mnemonicParsing="false" text="All Users" />
                 <MenuItem mnemonicParsing="false" text="Online" />
@@ -24,11 +25,8 @@
                 <MenuItem mnemonicParsing="false" text="Offline" />
             </items>
         </MenuButton>
-        <Button fx:id="sendTxt_button" layoutX="642.0" layoutY="477.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="195.0" text="Send">
-
-         <font>
-            <Font name="Apple SD Gothic Neo Regular" size="15.0" />
-         </font></Button>
-      <TextField fx:id="textField_OutputText" layoutX="15.0" layoutY="478.0" prefHeight="27.0" prefWidth="613.0" />
+        <Button fx:id="sendTxt_button" layoutX="704.0" layoutY="517.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="195.0" style="-fx-background-color: #195d9e;" text="Send" />
+      <TextField fx:id="textField_OutputText" layoutX="31.0" layoutY="518.0" prefHeight="27.0" prefWidth="655.0" />
+      <Label fx:id="clientName_Label" layoutX="710.0" layoutY="109.0" text="Text" />
     </children>
 </AnchorPane>

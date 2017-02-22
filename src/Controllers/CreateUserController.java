@@ -27,6 +27,7 @@ public class CreateUserController implements Initializable {
     PasswordField create_Password, confirm_Password;
     @FXML
     Button confirm_button;
+    @FXML Label create_Label;
 
     //class objects
     FileHandler fileHandler;

@@ -69,8 +69,8 @@ public class LoginController implements Initializable {
             fileHandler.saveServerCredentials(hostname_TextField.getText(), port_Number_TextField.getText());
             messenger.setTitle("Chat Application");
             Parent root = FXMLLoader.load(getClass().getResource("../Layouts/ClientLayout.fxml"));
-            root.getStylesheets().add(LoginController.class.getResource("/StyleSheets/LoginStyleSheet.css").toExternalForm());
-            messenger.setScene(new Scene(root, 847, 570));
+            root.getStylesheets().add(LoginController.class.getResource("/StyleSheets/Messenger.css").toExternalForm());
+            messenger.setScene(new Scene(root, 930, 587));
             messenger.show();
             messenger.setResizable(false);
             ((Node) actionEvent.getSource()).getScene().getWindow().hide();

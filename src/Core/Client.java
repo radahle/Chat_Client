@@ -30,19 +30,16 @@ public class Client extends Task {
     @FXML ListView client_List;
     @FXML TextArea chatWindow;
     @FXML TextField textField_OutputText;
-    @FXML
-    Button sendTxt_button;
+    @FXML Button sendTxt_button;
 
     private String hostName;
     private int portNumber;
-    private String serverFeedBack;
-    private PrintWriter printWriter;
-    private BufferedReader bufferedReader;
-    private ClientService cs;
+    private ClientService clientService;
+    private int clientPort;
 
 
     public Client(String hostName, int portNumber, ListView client_List, TextArea chatWindow,
-                  TextField textField_OutputText, Button sendTxt_button, String selectedClientPort) {
+                  TextField textField_OutputText, Button sendTxt_button) {
 
         this.chatWindow = chatWindow;
         this.client_List = client_List;
@@ -51,58 +48,32 @@ public class Client extends Task {
         this.textField_OutputText = textField_OutputText;
         this.sendTxt_button = sendTxt_button;
 
-
-
     }
 
-    public String getServerFeedBack(){
+    public int getClientPort(){
 
-        return serverFeedBack;
-    }
-
-    public void setServerFeedBack(String serverFeedBack){
-
-        this.serverFeedBack = serverFeedBack;
-
+        return clientPort;
     }
 
 
-    public void connectToServer() throws Exception{
+    public void setClientPort(int clientPort){
 
+        this.clientPort = clientPort;
     }
-
-
-    public void sendToServer(String message) throws IOException{
-
-        if (!message.isEmpty()){
-            printWriter.println(message);
-            printWriter.flush();
-        }
-    }
-
-    public String readMessage() throws IOException {
-
-        String text = bufferedReader.readLine();
-        if (text.isEmpty()) text = "empty";
-
-        return text;
-    }
-
 
 
     @Override
     protected Object call() throws Exception {
         while(true) {
             System.out.println("Client call");
-            cs.start();
+            clientService.start();
         }
     }
 
     public void start() throws UnknownHostException, IOException{
         Socket clientSocket = new Socket(hostName, portNumber);
-        cs = new ClientService(clientSocket, hostName, portNumber, textField_OutputText, chatWindow, sendTxt_button, client_List);
-        //cs.setSelectedClient(selectedClient);
-        //cs.setSelectedClientPort(selectedPortClient);
+        clientService = new ClientService(clientSocket, hostName, portNumber, textField_OutputText, chatWindow, sendTxt_button, client_List);
+        setClientPort(clientService.getClientPort());
         Thread thread = new Thread(this);
         thread.start();
         System.out.println("Start");

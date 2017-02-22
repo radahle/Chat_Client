@@ -24,15 +24,15 @@ public class ClientController implements Initializable {
     @FXML TextField textField_OutputText;
     @FXML MenuButton status_button;
     @FXML Button sendTxt_button;
+    @FXML Label clientName_Label;
+
 
     // Data field
     private String hostName;
     private int portNumber;
-    private String selectedClientPort;
 
 
     // Class related objects
-    ClientService cs;
     Client client;
     HostCredentials hostCredentials;
     MediaPlayer mediaPlayer;
@@ -52,10 +52,10 @@ public class ClientController implements Initializable {
         mediaPlayer = new MediaPlayer("login_Sound.wav");
         mediaPlayer.playSound();
 
-        client = new Client(hostName, portNumber, clients_list, chat_window, textField_OutputText, sendTxt_button,
-                             selectedClientPort);
+        client = new Client(hostName, portNumber, clients_list, chat_window, textField_OutputText, sendTxt_button);
         try {
             client.start();
+            clientName_Label.setText("You are: " + String.valueOf(client.getClientPort()));
         } catch (Exception e1) {
             e1.printStackTrace();
         }

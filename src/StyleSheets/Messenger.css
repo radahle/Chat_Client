@@ -1,4 +1,6 @@
 .root {
+
+    -fx-background-image: url("/Style/clientView.png");
     -fx-background-color: #1d1d1d;
 }
 
@@ -7,7 +9,7 @@
 
 .button {
 
-   -fx-background-color: red;
+    -fx-background-color: red;
      -fx-text-fill: white;
      -fx-background-radius: 16px;
 
@@ -17,8 +19,8 @@
 
        -fx-font-size: 23pt;
        -fx-font-family: "Segoe UI Semibold";
-       -fx-text-fill: aqua;
-       -fx-opacity: 0.6;
+       -fx-text-fill: black;
+
 
 }
 
@@ -26,8 +28,18 @@
 
         -fx-font-size: 11pt;
         -fx-font-family: "Segoe UI Semibold";
-        -fx-text-fill: white;
+        -fx-text-fill: black;
         -fx-opacity: 0.6;
+
+}
+
+#clientName_Label {
+
+        -fx-font-size: 16pt;
+        -fx-font-family: "Segoe UI Semibold";
+        -fx-text-fill: black;
+        -fx-opacity: 0.6;
+
 
 }
 
@@ -38,7 +50,6 @@
         -fx-background-radius: 30;
 
 }
-
 
 
 .text-field {

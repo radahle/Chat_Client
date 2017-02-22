@@ -1,4 +1,6 @@
 .root {
+
+    -fx-background-image: url("/Style/clientView.png");
     -fx-background-color: #1d1d1d;
 }
 
@@ -13,24 +15,21 @@
 
 }
 
-#login_Label{
+#create_Label {
 
-       -fx-font-size: 23pt;
+       -fx-font-size: 19pt;
        -fx-font-family: "Segoe UI Semibold";
-      -fx-text-fill: aqua;
-         -fx-opacity: 0.6;
-
+       -fx-text-fill: black;
 }
 
 .label {
 
         -fx-font-size: 11pt;
         -fx-font-family: "Segoe UI Semibold";
-        -fx-text-fill: white;
+        -fx-text-fill: black;
         -fx-opacity: 0.6;
 
 }
-
 
 .text-field {
     -fx-background-color: #a9a9a9 , white , white;
