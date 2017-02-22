@@ -9,6 +9,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.media.MediaPlayer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -48,7 +49,7 @@ public class ClientService extends Service {
         this.chatWindow = textArea_ChatWindow;
         this.sendTxt_button = sendTxt_button;
         this.client_List = client_List;
-        mediaPlayer = new MediaPlayer("receivedMessage.wav");
+        //mediaPlayer = new MediaPlayer("receivedMessage.wav");
 
         Platform.runLater(() -> {
 
@@ -125,16 +126,23 @@ public class ClientService extends Service {
                     while (true) {
                         receivedText = bufferedReader.readLine();
 
-                        mediaPlayer.playSound();
+                        //mediaPlayer.playSound();
 
                         Pattern clientPattern = Pattern.compile("(?<=\\#\\@\\$)(.*)(?=\\$\\@\\#)");
                         Matcher clientMatcher = clientPattern.matcher(receivedText);
                         if (clientMatcher.find()) {
                             String finalClientInfo = clientMatcher.group(1);
-
+                            	chatWindow.appendText("Entered IF statement \n");
                             Platform.runLater(() -> {
+                            	if(client_List.getItems().equals(finalClientInfo)) {
+                            		chatWindow.appendText("Entered IF equal statement \n");
+                            		for (int i = 0; i < client_List.getItems().size(); i++) {
+										client_List.getItems().remove(i).equals(finalClientInfo);
+									}
+                            	}
 								client_List.getItems().removeAll(finalClientInfo);
 								client_List.getItems().add(finalClientInfo);
+								chatWindow.appendText("Amounts: " + String.valueOf(client_List.getItems().size()) + "\n");
 									});
                         } else {
                             chatWindow.appendText(receivedText + "\n");

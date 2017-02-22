@@ -51,7 +51,7 @@ public class ClientController implements Initializable {
         portNumber = hostCredentials.getPortNumber();
         mediaPlayer = new MediaPlayer("login_Sound.wav");
 
-        mediaPlayer.playSound();
+        //mediaPlayer.playSound();
 
         client = new Client(hostName, portNumber, clients_list, chat_window, textField_OutputText, sendTxt_button,
                              selectedClientPort);
