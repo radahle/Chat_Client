@@ -14,7 +14,7 @@
     <children>
         <TextArea fx:id="chat_window" editable="false" layoutX="31.0" layoutY="63.0" prefHeight="437.0" prefWidth="655.0">
          <font>
-            <Font name="Apple SD Gothic Neo Regular" size="27.0" />
+            <Font name="Apple SD Gothic Neo SemiBold" size="19.0" />
          </font></TextArea>
         <ListView fx:id="clients_list" layoutX="704.0" layoutY="143.0" prefHeight="357.0" prefWidth="195.0" />
         <MenuButton fx:id="status_button" layoutX="704.0" layoutY="63.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="195.0">
