@@ -31,7 +31,7 @@
       <PasswordField fx:id="passwordField" layoutX="307.0" layoutY="353.0" promptText="Password (required)" />
       <Button fx:id="login_Button" layoutX="400.0" layoutY="403.0" mnemonicParsing="false" onAction="#onLoginClick" prefHeight="27.0" prefWidth="74.0" style="-fx-background-color: #195d9e;" text="Login" textFill="WHITE" />
       <Label fx:id="create_User" layoutX="306.0" layoutY="408.0" onMouseClicked="#onCreateClick" text="Create User" textFill="#2341ff" />
-      <Label layoutX="339.0" layoutY="53.0" text="Login" textFill="#195d9e">
+      <Label fx:id="login_Label" layoutX="339.0" layoutY="53.0" text="Login" textFill="#195d9e">
          <font>
             <Font name="Arial Rounded MT Bold" size="38.0" />
          </font>

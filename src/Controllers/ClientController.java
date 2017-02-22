@@ -3,16 +3,20 @@ package Controllers;
 import Core.Client;
 import Core.ClientService;
 import Core.HostCredentials;
+import Core.MediaPlayer;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by RudiAndre & pontusskold on 03.02.2017.
@@ -29,11 +33,14 @@ public class ClientController implements Initializable {
     // Data field
     private String hostName;
     private int portNumber;
+    private String selectedClientPort;
+
 
     // Class related objects
     ClientService cs;
     Client client;
     HostCredentials hostCredentials;
+    MediaPlayer mediaPlayer;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -42,8 +49,12 @@ public class ClientController implements Initializable {
         hostCredentials.getServerCredentials();
         hostName = hostCredentials.getHostName();
         portNumber = hostCredentials.getPortNumber();
+        mediaPlayer = new MediaPlayer("login_Sound.wav");
 
-        client = new Client(hostName, portNumber, clients_list, chat_window, textField_OutputText, sendTxt_button);
+        mediaPlayer.playSound();
+
+        client = new Client(hostName, portNumber, clients_list, chat_window, textField_OutputText, sendTxt_button,
+                             selectedClientPort);
         try {
             client.start();
         } catch (Exception e1) {
@@ -51,6 +62,13 @@ public class ClientController implements Initializable {
             e1.printStackTrace();
         }
     }
+
+
+
+    public void handle(MouseEvent event) {
+        System.out.println("clicked on " + clients_list.getSelectionModel().getSelectedItem());
+    }
+}
 
 /*
         textField_OutputText.setOnKeyPressed(event -> {
@@ -73,4 +91,3 @@ public class ClientController implements Initializable {
     }*/
 
 
-}

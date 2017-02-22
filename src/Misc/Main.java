@@ -17,9 +17,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("../Layouts/LoginLayout.fxml"));
+        root.getStylesheets().add(Main.class.getResource("/StyleSheets/Messenger.css").toExternalForm());
         primaryStage.setTitle("Chat");
         primaryStage.setScene(new Scene(root, 800, 550));
         primaryStage.show();
-        root.getStylesheets().add("Style.css");
     }
 }

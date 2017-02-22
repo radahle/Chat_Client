@@ -30,6 +30,7 @@ public class LoginController implements Initializable {
     @FXML PasswordField passwordField;
     @FXML Button login_Button;
     @FXML Label create_User;
+    @FXML Label login_Label;
 
     //Class objects
     Stage createAccountStage;
@@ -60,6 +61,7 @@ public class LoginController implements Initializable {
             fileHandler.saveServerCredentials(hostname_TextField.getText(), port_Number_TextField.getText());
             messenger.setTitle("Chat Application");
             Parent root = FXMLLoader.load(getClass().getResource("../Layouts/ClientLayout.fxml"));
+            root.getStylesheets().add(LoginController.class.getResource("/StyleSheets/LoginStyleSheet.css").toExternalForm());
             messenger.setScene(new Scene(root, 847, 570));
             messenger.show();
             messenger.setResizable(false);
@@ -74,6 +76,7 @@ public class LoginController implements Initializable {
 
         createAccountStage.setTitle("Create Account");
         Parent root = FXMLLoader.load(getClass().getResource("../Layouts/CreateUserLayout.fxml"));
+        root.getStylesheets().add(LoginController.class.getResource("/StyleSheets/CreateUser.css").toExternalForm());
         createAccountStage.setScene(new Scene(root ,600, 400));
         createAccountStage.show();
         createAccountStage.setResizable(false);

@@ -38,4 +38,12 @@ public class AlertBox {
         alert.setContentText("Cant find host: " + "[" + hostname + ":" + portnumber + "] > shutting down");
         alert.showAndWait();
     }
+
+    public static void noSuchElement(){
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("No Such Element");
+        alert.setContentText("You cant click on an empty Cell");
+        alert.showAndWait();
+    }
 }

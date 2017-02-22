@@ -39,7 +39,7 @@ public class Client extends Task {
 
 
     public Client(String hostName, int portNumber, ListView client_List, TextArea chatWindow,
-                  TextField textField_OutputText, Button sendTxt_button) {
+                  TextField textField_OutputText, Button sendTxt_button, String selectedClientPort) {
 
         this.chatWindow = chatWindow;
         this.client_List = client_List;
@@ -47,6 +47,8 @@ public class Client extends Task {
         this.portNumber = portNumber;
         this.textField_OutputText = textField_OutputText;
         this.sendTxt_button = sendTxt_button;
+
+
 
     }
 
@@ -83,6 +85,8 @@ public class Client extends Task {
         return text;
     }
 
+
+
     @Override
     protected Object call() throws Exception {
         while(true) {
@@ -94,6 +98,8 @@ public class Client extends Task {
     public void start() throws UnknownHostException, IOException{
         Socket clientSocket = new Socket(hostName, portNumber);
         cs = new ClientService(clientSocket, hostName, portNumber, textField_OutputText, chatWindow, sendTxt_button, client_List);
+        //cs.setSelectedClient(selectedClient);
+        //cs.setSelectedClientPort(selectedPortClient);
         Thread thread = new Thread(this);
         thread.start();
         System.out.println("Start");
