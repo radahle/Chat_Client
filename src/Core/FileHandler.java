@@ -1,11 +1,10 @@
 package Core;
 
 import java.io.*;
-import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
+ * Class FileHandler
+ * provides function of storing client-information.
  * @author Shohaib Muhammad <S300363>
  * @author Kittimasak Bunrat <s300342>
  * @author Pontus Sköld <s300377>
@@ -20,6 +19,11 @@ public class FileHandler {
 
     }
 
+    /**
+     * This method saves the hostname and portnumber in a txt.file.
+     * @param hostname is hostname given by user.
+     * @param portNumber is portnumber given by user.
+     */
     public void saveServerCredentials(String hostname, String portNumber){
 
         try {
@@ -49,6 +53,11 @@ public class FileHandler {
     }
 
 
+    /**
+     * This method saves username and password in a txt.file.
+     * @param username
+     * @param password
+     */
     public void saveCredentials(String username, String password){
 
         try {
@@ -64,7 +73,12 @@ public class FileHandler {
         }
     }
 
-
+    /**
+     * This method reads information form Credentials.txt.
+     * @param username is the usernamen given by user.
+     * @param password is the password given by user.
+     * @return
+     */
     public boolean readCredentials(String username, String password){
 
         try {

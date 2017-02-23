@@ -2,10 +2,8 @@ package Core;
 
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+
 import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -26,7 +24,8 @@ public class Client extends Task {
     @FXML TextArea chatWindow;
     @FXML TextField textField_OutputText;
     @FXML Button sendTxt_button;
-    @FXML ChoiceBox<String> choiceBox;
+    @FXML
+    ChoiceBox<String> choiceBox;
 
     private String hostName;
     private int portNumber;

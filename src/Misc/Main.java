@@ -6,9 +6,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 /**
+ * Class Main
+ * provides the application for launching JavaFX
  * @author Shohaib Muhammad <S300363>
  * @author Kittimasak Bunrat <s300342>
  * @author Pontus Sköld <s300377>
