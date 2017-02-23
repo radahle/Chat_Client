@@ -34,6 +34,8 @@ public class ClientService extends Service {
     @FXML TextArea chatWindow;
     @FXML TextField textField_OutputText;
     @FXML Button sendTxt_button;
+    
+    
 
     public ObservableList<String> clientOList = FXCollections.observableArrayList();
     public ObservableList<String> tempOList = FXCollections.observableArrayList();
