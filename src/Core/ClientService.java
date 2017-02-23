@@ -6,12 +6,13 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -34,8 +35,8 @@ public class ClientService extends Service {
     @FXML TextArea chatWindow;
     @FXML TextField textField_OutputText;
     @FXML Button sendTxt_button;
-    
-    
+    @FXML ChoiceBox<String> choiceBox;
+
 
     public ObservableList<String> clientOList = FXCollections.observableArrayList();
     public ObservableList<String> tempOList = FXCollections.observableArrayList();
@@ -46,10 +47,13 @@ public class ClientService extends Service {
     private BufferedReader bufferedReader;
     private String contactPort;
     private int clientPort;
+    private boolean available;
+
     MediaPlayer mediaPlayer;
 
     public ClientService(Socket socket, String hostName, int portNumber, TextField textField_OutPutText,
-                         TextArea textArea_ChatWindow, Button sendTxt_button, ListView client_List) {
+                         TextArea textArea_ChatWindow, Button sendTxt_button, ListView client_List,
+                            ChoiceBox<String> choiceBox) {
         this.clientSocket = socket;
         this.portNumber = portNumber;
         this.hostName = hostName;
@@ -58,6 +62,7 @@ public class ClientService extends Service {
         this.sendTxt_button = sendTxt_button;
         this.client_List = client_List;
         this.clientPort = socket.getLocalPort();
+        this.choiceBox = choiceBox;
 
         mediaPlayer = new MediaPlayer("Notification.wav");
 
@@ -98,6 +103,16 @@ public class ClientService extends Service {
     public int getClientPort() {
 
         return clientPort;
+    }
+
+    public boolean getIsAvailable(){
+
+        return available;
+    }
+
+    public void setAvailable(boolean available){
+
+        this.available = available;
     }
 
     @Override
@@ -142,7 +157,6 @@ public class ClientService extends Service {
                     while (true) {
                         receivedText = bufferedReader.readLine();
 
-                        mediaPlayer.playSound();
 
                         Pattern clientPattern = Pattern.compile("(?<=\\#\\@\\$)(.*)(?=\\$\\@\\#)");
                         Matcher clientMatcher = clientPattern.matcher(receivedText);
@@ -166,7 +180,19 @@ public class ClientService extends Service {
                                 client_List.setItems(clientOList);
                             });
                         } else {
-                            chatWindow.appendText(receivedText + "\n");
+
+
+                            if (choiceBox.getValue().equals("Online")){
+
+                                chatWindow.appendText(receivedText + "\n");
+                                mediaPlayer.playSound();
+
+
+                            }else if (choiceBox.getValue().equals("Busy")){
+
+
+                            }
+
                         }
                     }
 

@@ -4,10 +4,7 @@ import Controllers.LoginController;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import sun.rmi.runtime.Log;
 
@@ -31,6 +28,7 @@ public class Client extends Task {
     @FXML TextArea chatWindow;
     @FXML TextField textField_OutputText;
     @FXML Button sendTxt_button;
+    @FXML ChoiceBox<String> choiceBox;
 
     private String hostName;
     private int portNumber;
@@ -39,7 +37,7 @@ public class Client extends Task {
 
 
     public Client(String hostName, int portNumber, ListView client_List, TextArea chatWindow,
-                  TextField textField_OutputText, Button sendTxt_button) {
+                  TextField textField_OutputText, Button sendTxt_button, ChoiceBox<String> choiceBox) {
 
         this.chatWindow = chatWindow;
         this.client_List = client_List;
@@ -47,6 +45,7 @@ public class Client extends Task {
         this.portNumber = portNumber;
         this.textField_OutputText = textField_OutputText;
         this.sendTxt_button = sendTxt_button;
+        this.choiceBox = choiceBox;
 
     }
 
@@ -72,7 +71,8 @@ public class Client extends Task {
 
     public void start() throws UnknownHostException, IOException{
         Socket clientSocket = new Socket(hostName, portNumber);
-        clientService = new ClientService(clientSocket, hostName, portNumber, textField_OutputText, chatWindow, sendTxt_button, client_List);
+        clientService = new ClientService(clientSocket, hostName, portNumber, textField_OutputText, chatWindow,
+                sendTxt_button, client_List, choiceBox);
         setClientPort(clientService.getClientPort());
         Thread thread = new Thread(this);
         thread.start();
