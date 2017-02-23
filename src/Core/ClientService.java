@@ -84,9 +84,11 @@ public class ClientService extends Service {
 
                     System.out.println("Selectedclientport från mouseclick " +selectedClientPort);
 
-                    contactPort = "@" + selectedClientPort;
+                    contactPort = selectedClientPort;
 
 
+                } else {
+                    contactPort = null;
                 }
 
                 }catch (Exception e){
@@ -216,9 +218,9 @@ public class ClientService extends Service {
 
 
     public void sendToServer(String message) throws IOException {
-        if (!message.isEmpty()) {
+        if (!message.isEmpty() && contactPort != null) {
 
-            printWriter.println("[" + clientSocket.getLocalPort() + "]: " + message + contactPort);
+            printWriter.println("[" + clientSocket.getLocalPort() + "]: " + message + "@" + contactPort);
             printWriter.flush();
 
         }

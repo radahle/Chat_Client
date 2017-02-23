@@ -24,8 +24,7 @@ public class Client extends Task {
     @FXML TextArea chatWindow;
     @FXML TextField textField_OutputText;
     @FXML Button sendTxt_button;
-    @FXML
-    ChoiceBox<String> choiceBox;
+    @FXML ChoiceBox<String> choiceBox;
 
     private String hostName;
     private int portNumber;
