@@ -2,7 +2,12 @@ package Core;
 
 import javafx.scene.control.Alert;
 
+
+
 /**
+ * Class AlertBox
+ * provides warning messages for the Client in different scenarios.
+ *
  * @author Shohaib Muhammad <S300363>
  * @author Kittimasak Bunrat <s300342>
  * @author Pontus Sköld <s300377>
@@ -11,7 +16,7 @@ import javafx.scene.control.Alert;
 public class AlertBox {
 
     /**
-     * public static void badCredentials method shows a warning message
+     * This method shows a warning message
      * if username is not registered or written wrongly.
      */
     public static void badCredentials(){
@@ -23,7 +28,7 @@ public class AlertBox {
     }
 
     /**
-     * public static void differentPasswords method shows a warning message
+     * This method shows a warning message
      * if the password and repeted password is not written identically.
      */
     public static void differentPasswords(){
@@ -35,7 +40,7 @@ public class AlertBox {
     }
 
     /**
-     * public static void badHost method shows a warning message
+     * This method shows a warning message
      * if the host is not reached.
      */
     public static void badHost(){
@@ -47,9 +52,10 @@ public class AlertBox {
     }
 
     /**
-     * public static void hostUnreachable
-     * @param hostname
-     * @param portnumber
+     * This method shows a warning message
+     * if specified host along with portnumber is not reached.
+     * @param hostname is the hostname specified by user.
+     * @param portnumber is the portnumber specified by user.
      */
     public static void hostUnreachable(String hostname, int portnumber){
 
