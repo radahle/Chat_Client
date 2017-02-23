@@ -80,6 +80,12 @@ public class LoginController implements Initializable {
         }
     }
 
+    /**
+     * OnCreateClick opens a new stage for creation of new user
+     * @param mouseEvent is used when user clicks on create account.
+     * @throws IOException
+     */
+
     public void onCreateClick(MouseEvent mouseEvent) throws IOException {
 
         createAccountStage.setTitle("Create Account");

@@ -10,6 +10,10 @@ import javafx.scene.control.Alert;
  */
 public class AlertBox {
 
+    /**
+     * public static void badCredentials method shows a warning message
+     * if username is not registered or written wrongly.
+     */
     public static void badCredentials(){
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -18,6 +22,10 @@ public class AlertBox {
         alert.showAndWait();
     }
 
+    /**
+     * public static void differentPasswords method shows a warning message
+     * if the password and repeted password is not written identically.
+     */
     public static void differentPasswords(){
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -26,6 +34,10 @@ public class AlertBox {
         alert.showAndWait();
     }
 
+    /**
+     * public static void badHost method shows a warning message
+     * if the host is not reached.
+     */
     public static void badHost(){
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -34,6 +46,11 @@ public class AlertBox {
         alert.showAndWait();
     }
 
+    /**
+     * public static void hostUnreachable
+     * @param hostname
+     * @param portnumber
+     */
     public static void hostUnreachable(String hostname, int portnumber){
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
