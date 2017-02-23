@@ -7,7 +7,7 @@ import javafx.scene.control.*;
 import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
-
+///////
 /**
  * Class Client
  * provides the data for declaring a Client
