@@ -19,7 +19,7 @@
 
        -fx-font-size: 23pt;
        -fx-font-family: "Segoe UI Semibold";
-       -fx-text-fill: black;
+       -fx-text-fill: white;
 
 
 }
@@ -28,8 +28,8 @@
 
         -fx-font-size: 11pt;
         -fx-font-family: "Segoe UI Semibold";
-        -fx-text-fill: black;
-        -fx-opacity: 0.6;
+        -fx-text-fill: white;
+        -fx-opacity: 0.9;
 
 }
 
